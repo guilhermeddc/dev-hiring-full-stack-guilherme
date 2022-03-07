@@ -1,0 +1,24 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "Serviço para entregar regras necessarias para o cadastro de produtos.",
+  "main": "index.js",
+  "scripts": {
+    "start": "export NODE_ENV=dev && node index.js",
+    "test": "export NODE_ENV=test && mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.2",
+    "helmet": "^5.0.2",
+    "nconf": "^0.11.3"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0",
+    "supertest": "^6.2.2"
+  }
+}

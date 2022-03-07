@@ -1,0 +1,6 @@
+{
+  "reporter": "spec",
+  "ui": "bdd",
+  "recursive": true,
+  "exit": true
+}
