@@ -1,8 +1,17 @@
+const { addItem, findByName } = require("../repository");
+
 const create = (req, res) => {
-  const { body } = req;
+  const { name, value, quantity } = req;
   try {
-    const product = { body };
-    res.sendStatus(210);
+    const productExists = findByName(name);
+
+    if (!!productExists) {
+      return res.status(400).json({ message: "Product already exists!" });
+    }
+
+    addItem({ name, value, quantity });
+
+    res.sendStatus(200);
   } catch (err) {
     console.error(err);
     res.sendStatus(500);

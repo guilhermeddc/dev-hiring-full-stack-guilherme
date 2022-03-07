@@ -49,20 +49,20 @@ const EnhancedTableToolbar = (props) => {
 
         {selected.length > 0 && (
           <Tooltip title="Deletar">
-            <IconButton>
+            <IconButton color="error">
               <DeleteIcon />
             </IconButton>
           </Tooltip>
         )}
         {selected.length === 1 && (
           <Tooltip title="Edit">
-            <IconButton onClick={props.handleOpenModal}>
+            <IconButton onClick={props.handleOpenModal} color="info">
               <EditIcon />
             </IconButton>
           </Tooltip>
         )}
-        <Tooltip title="Criar" >
-          <IconButton onClick={props.handleOpenModal}>
+        <Tooltip title="Criar">
+          <IconButton onClick={props.handleOpenModal} color="success">
             <AddCircle />
           </IconButton>
         </Tooltip>

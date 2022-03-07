@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -24,6 +25,7 @@ import {
 } from "../../components";
 
 import { RegisterForm } from "../";
+import { Typography } from "@mui/material";
 
 const EnhancedTable = () => {
   const [products, setProducts] = useState([]);
@@ -61,6 +63,12 @@ const EnhancedTable = () => {
       numeric: true,
       disablePadding: false,
       label: "Quantidade",
+    },
+    {
+      id: "state",
+      numeric: true,
+      disablePadding: false,
+      label: "Estado",
     },
   ];
 
@@ -128,16 +136,14 @@ const EnhancedTable = () => {
       <div>
         <Dialog
           open={open}
-          onClose={handleCloseModal}          
+          onClose={handleCloseModal}
           scroll="paper"
           aria-labelledby="scroll-dialog-title"
           aria-describedby="scroll-dialog-description"
         >
           <DialogTitle id="scroll-dialog-title">Cadastro e edição</DialogTitle>
           <DialogContent>
-            <RegisterForm
-              selecteditems={selected}
-            ></RegisterForm>
+            <RegisterForm selecteditems={selected}></RegisterForm>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleCloseModal}>Fechar</Button>
@@ -153,8 +159,12 @@ const EnhancedTable = () => {
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - products.length) : 0;
 
   return (
-    <Box sx={{ width: "100%" }}>
+    <Container maxWidth="md">
       {renderRegisterModal(openModal)}
+      <Box marginY={2}>
+        <Typography variant="h5">Tabela de produtos</Typography>
+      </Box>
+
       <Paper sx={{ width: "100%", mb: 2 }}>
         <EnhancedTableToolbar
           selected={selected}
@@ -213,6 +223,9 @@ const EnhancedTable = () => {
                       </TableCell>
                       <TableCell align="right">{row.value}</TableCell>
                       <TableCell align="right">{row.quantity}</TableCell>
+                      <TableCell align="right">
+                        {row.quantity > 0 ? "disponível" : "indisponível"}
+                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -236,7 +249,7 @@ const EnhancedTable = () => {
           updateRowsPerPage={(event) => setRowsPerPage(event)}
         />
       </Paper>
-    </Box>
+    </Container>
   );
 };
 
